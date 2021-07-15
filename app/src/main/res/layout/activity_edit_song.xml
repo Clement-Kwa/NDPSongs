@@ -22,8 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-
-
+        android:enabled="false"
         android:inputType="textPersonName"
         />
 
@@ -77,11 +76,10 @@
         android:layout_height="wrap_content"
         android:text="@string/Stars" />
 
-    <RadioGroup
-        android:orientation="horizontal"
-        android:id="@+id/radioGrp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb1"
@@ -89,14 +87,12 @@
             android:layout_height="wrap_content"
 
             android:text="@string/one" />
-
         <RadioButton
             android:id="@+id/rb2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:text="@string/two" />
-
         <RadioButton
             android:id="@+id/rb3"
             android:layout_width="wrap_content"
@@ -110,14 +106,18 @@
             android:layout_height="wrap_content"
 
             android:text="@string/four" />
-
         <RadioButton
             android:id="@+id/rb5"
-            android:checked="true"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/fiv" />
-    </RadioGroup>
+
+
+
+
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

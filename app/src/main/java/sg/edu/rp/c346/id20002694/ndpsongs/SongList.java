@@ -26,20 +26,23 @@ public class SongList extends AppCompatActivity {
 
         btnShow = findViewById(R.id.btnShow);
         lv = findViewById(R.id.lv);
-
         al = new ArrayList<Song>();
+
+        DBHelper dbh = new DBHelper(SongList.this);
+        al.addAll(dbh.getAllSongs());
+
+
         aa = new ArrayAdapter<Song>(this,
                 android.R.layout.simple_list_item_1, al);
         lv.setAdapter(aa);
+        dbh.close();
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int
-                    position, long identity) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long identity) {
                 Song data = al.get(position);
-                Intent i = new Intent(SongList.this,
-                        EditSong.class);
+                Intent i = new Intent(SongList.this, EditSong.class);
                 i.putExtra("data", data);
                 startActivity(i);
             }
@@ -50,11 +53,8 @@ public class SongList extends AppCompatActivity {
             public void onClick(View v) {
                 DBHelper dbh = new DBHelper(SongList.this);
                 al.clear();
-
                 String rating  = "5";
                 al.addAll(dbh.getAllSongs(rating));
-
-
                 aa.notifyDataSetChanged();
             }
         });
@@ -67,10 +67,10 @@ public class SongList extends AppCompatActivity {
         super.onResume();
         DBHelper dbh = new DBHelper(SongList.this);
         al.clear();
-        //al.addAll(dbh.getAllNotes());
 
         al.addAll(dbh.getAllSongs());
 
         aa.notifyDataSetChanged();
+        dbh.close();
     }
 }

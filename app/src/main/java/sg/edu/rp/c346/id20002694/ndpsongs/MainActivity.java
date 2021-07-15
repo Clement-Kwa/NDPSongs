@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                         SongList.class);
 
                 startActivity(i);
+
             }
         });
 
@@ -50,8 +51,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String title = etTitle.getText().toString();
                 String singer = etSingers.getText().toString();
-                int year = Integer.parseInt(etYear.getText().toString());
-                int stars = 0 ;
+                int year = 0;
+
+                if(!etYear.getText().toString().isEmpty()){
+                     year = Integer.parseInt(etYear.getText().toString());
+                }
+
+
+                int stars = 1 ;
 
                 if(radioGrp.getCheckedRadioButtonId() == R.id.rb1){
                     stars=1;
@@ -70,7 +77,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertSong( title,  singer,  year,  stars  );
+                 dbh.insertSong( title,  singer,  year,  stars  );
+
 
             }
         });

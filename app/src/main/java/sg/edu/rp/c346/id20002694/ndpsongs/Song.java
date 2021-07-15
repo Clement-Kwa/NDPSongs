@@ -10,11 +10,18 @@ public class Song implements Serializable {
     private int year;
     private int stars;
 
-    public Song(  String title, String singers, int year,  int stars) {
+    public Song( String title, String singers, int year,  int stars) {
         this.singers = singers;
         this.title = title;
         this.year = year;
         this.id = stars;
+    }
+    public Song(  int id, String title, String singers, int year,  int stars) {
+        this.singers = singers;
+        this.title = title;
+        this.year = year;
+        this.id = id;
+        this.stars=stars;
     }
 
     public int getId() {
@@ -41,11 +48,30 @@ public class Song implements Serializable {
         this.singers = singers;
         this.title = title;
         this.year = year;
-        this.id = stars;
+        this.id = id;
+        this.stars = stars;
     }
 
+
     @Override
-    public String toString() { return title + "\n" + singers +" - "+year+ "\n";  }
+    public String toString() {
+        String starsString="";
+        if(stars==1){
+            starsString="*";
+        }
+        else if(stars==2){
+            starsString="**";
+        }
+        else if(stars==3){
+            starsString="***";
+        }
+        else if(stars==4){
+            starsString="****";
+        }
+        else if(stars==5){
+            starsString="*****";
+        }
+        return title + "\n" + singers +" - "+year+ "\n"+starsString;  }
 
 
 
